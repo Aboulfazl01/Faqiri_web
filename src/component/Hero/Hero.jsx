@@ -60,6 +60,7 @@ function FeatureIcon({ type }) {
     );
   }
 
+
   if (type === "shirt") {
     return (
       <svg
@@ -79,6 +80,7 @@ function FeatureIcon({ type }) {
     );
   }
 
+
   if (type === "check") {
     return (
       <svg
@@ -95,6 +97,7 @@ function FeatureIcon({ type }) {
       </svg>
     );
   }
+
 
   return (
     <svg
@@ -134,9 +137,15 @@ function FeatureItem({ feature }) {
       "
     >
 
-      <div className="mb-2.5 text-[#b78932]">
+      <div
+        className="
+          mb-2.5
+          text-[#b78932]
+        "
+      >
         <FeatureIcon type={feature.icon} />
       </div>
+
 
       <h3
         className="
@@ -151,6 +160,7 @@ function FeatureItem({ feature }) {
       >
         {feature.title}
       </h3>
+
 
       <p
         className="
@@ -191,6 +201,7 @@ export default function Hero() {
       setAnimation("exit");
     }, 3000);
 
+
     const nextTimer = setTimeout(() => {
 
       setCurrentImage(
@@ -200,6 +211,7 @@ export default function Hero() {
       setAnimation("enter");
 
     }, 3900);
+
 
     return () => {
 
@@ -483,6 +495,7 @@ export default function Hero() {
                   Shop the collection
                 </span>
 
+
                 <svg
                   className="
                     relative
@@ -575,6 +588,7 @@ export default function Hero() {
                 <span className="whitespace-nowrap">
                   Request custom tailoring
                 </span>
+
 
                 <svg
                   className="
@@ -733,15 +747,15 @@ export default function Hero() {
 
 
           {/* ================================================= */}
-          {/* ==================== RIGHT IMAGE ================= */}
+          {/* ==================== IMAGE ======================= */}
           {/* ================================================= */}
 
           <div
             className="
               relative
-              min-h-[300px]
+              min-h-[450px]
               w-full
-              sm:min-h-[430px]
+              sm:min-h-[520px]
               lg:min-h-[650px]
             "
           >
@@ -751,15 +765,15 @@ export default function Hero() {
                 absolute
                 left-1/2
                 top-0
-                h-[250px]
-                w-[58%]
+                h-[420px]
+                w-[92%]
                 -translate-x-1/2
 
-                sm:h-[380px]
-                sm:w-[60%]
+                sm:h-[500px]
+                sm:w-[88%]
 
-                md:h-[500px]
-                md:w-[62%]
+                md:h-[570px]
+                md:w-[82%]
 
                 lg:left-auto
                 lg:right-0
@@ -775,14 +789,13 @@ export default function Hero() {
                   absolute
                   inset-0
                   overflow-hidden
-                  rounded-[20px]
-                  shadow-[0_20px_50px_rgba(40,30,20,0.14)]
+                  rounded-[24px]
+                  shadow-[0_25px_60px_rgba(40,30,20,0.15)]
                   hero-slide-${animation}
 
-                  sm:rounded-[28px]
+                  sm:rounded-[30px]
 
                   lg:rounded-[32px]
-                  lg:shadow-[0_25px_60px_rgba(40,30,20,0.15)]
                 `}
               >
 
@@ -793,6 +806,7 @@ export default function Hero() {
                     h-full
                     w-full
                     object-cover
+                    object-center
                   "
                 />
 
@@ -816,23 +830,23 @@ export default function Hero() {
                 <div
                   className="
                     absolute
-                    bottom-3
-                    left-3
+                    bottom-4
+                    left-4
                     z-10
                     text-white
-                    sm:bottom-6
-                    sm:left-6
-                    lg:bottom-7
-                    lg:left-7
+
+                    sm:bottom-7
+                    sm:left-7
                   "
                 >
 
                   <p
                     className="
-                      text-[6px]
+                      text-[7px]
                       uppercase
-                      tracking-[0.18em]
+                      tracking-[0.2em]
                       opacity-80
+
                       sm:text-[9px]
                       sm:tracking-[0.25em]
                     "
@@ -844,9 +858,9 @@ export default function Hero() {
                     className="
                       mt-1
                       font-serif
-                      text-[12px]
-                      sm:text-[18px]
-                      lg:text-[20px]
+                      text-[15px]
+
+                      sm:text-[20px]
                     "
                   >
                     New Collection
@@ -866,7 +880,7 @@ export default function Hero() {
             <div
               className="
                 absolute
-                right-[8%]
+                right-[2%]
                 top-[50%]
                 z-20
                 flex
@@ -874,7 +888,7 @@ export default function Hero() {
                 flex-col
                 gap-2
 
-                sm:right-[7%]
+                sm:right-[4%]
                 sm:gap-3
 
                 lg:right-0
@@ -889,6 +903,7 @@ export default function Hero() {
                     flex
                     items-center
                     gap-1.5
+
                     sm:gap-2
                   "
                 >
@@ -898,7 +913,9 @@ export default function Hero() {
                       text-[8px]
                       transition-colors
                       duration-300
+
                       sm:text-[10px]
+
                       ${
                         index === currentImage
                           ? "text-[#a77d31]"
@@ -915,10 +932,11 @@ export default function Hero() {
                       h-px
                       transition-all
                       duration-700
+
                       ${
                         index === currentImage
-                          ? "w-5 bg-[#b78932] sm:w-7"
-                          : "w-2.5 bg-[#cfc6b8] sm:w-3"
+                          ? "w-6 bg-[#b78932] sm:w-7"
+                          : "w-3 bg-[#cfc6b8]"
                       }
                     `}
                   />
@@ -1016,6 +1034,10 @@ export default function Hero() {
 
       <style>{`
 
+        /* ================================================= */
+        /* ================= IMAGE ENTER =================== */
+        /* ================================================= */
+
         @keyframes slideFromRight {
 
           0% {
@@ -1030,6 +1052,10 @@ export default function Hero() {
 
         }
 
+
+        /* ================================================= */
+        /* ================= IMAGE EXIT ==================== */
+        /* ================================================= */
 
         @keyframes slideToLeft {
 
@@ -1068,6 +1094,10 @@ export default function Hero() {
         }
 
 
+        /* ================================================= */
+        /* ================= FEATURE MARQUEE =============== */
+        /* ================================================= */
+
         .feature-marquee {
 
           animation:
@@ -1093,6 +1123,10 @@ export default function Hero() {
 
         }
 
+
+        /* ================================================= */
+        /* ================ REDUCED MOTION ================= */
+        /* ================================================= */
 
         @media (prefers-reduced-motion: reduce) {
 
