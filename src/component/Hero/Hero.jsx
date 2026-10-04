@@ -137,8 +137,6 @@ function FeatureItem({ feature }) {
       "
     >
 
-      {/* ICON */}
-
       <div
         className="
           mb-2.5
@@ -148,8 +146,6 @@ function FeatureItem({ feature }) {
         <FeatureIcon type={feature.icon} />
       </div>
 
-
-      {/* TITLE */}
 
       <h3
         className="
@@ -165,8 +161,6 @@ function FeatureItem({ feature }) {
         {feature.title}
       </h3>
 
-
-      {/* DESCRIPTION */}
 
       <p
         className="
@@ -335,12 +329,12 @@ export default function Hero() {
             <h1
               className="
                 max-w-[610px]
-                text-[56px]
+                text-[40px]
                 font-semibold
                 leading-[0.94]
                 tracking-[-0.045em]
                 text-[#24231f]
-                sm:text-[68px]
+                sm:text-[60px]
                 md:text-[76px]
                 lg:text-[68px]
                 xl:text-[82px]
@@ -420,12 +414,14 @@ export default function Hero() {
 
             <div
               className="
-                mt-9
+                mt-7
                 flex
                 flex-row
                 flex-nowrap
                 items-center
-                gap-3
+                gap-1.5
+                sm:mt-9
+                sm:gap-3
               "
             >
 
@@ -437,30 +433,42 @@ export default function Hero() {
                   group
                   relative
                   inline-flex
-                  h-[56px]
-                  min-w-[195px]
-                  shrink-0
+                  h-[38px]
+                  min-w-0
+                  shrink
                   items-center
                   justify-center
-                  gap-3
+                  gap-1
                   overflow-hidden
                   rounded-[5px]
                   border
                   border-[#24231f]
                   bg-[#24231f]
-                  px-7
-                  text-[11px]
+                  px-2.5
+                  text-[7px]
                   font-semibold
                   uppercase
-                  tracking-[0.12em]
+                  tracking-[0.06em]
                   text-white
-                  shadow-[0_10px_25px_rgba(36,35,31,0.13)]
+                  shadow-[0_8px_20px_rgba(36,35,31,0.12)]
                   transition-all
                   duration-500
                   ease-out
                   hover:-translate-y-1
                   hover:border-[#b78932]
                   hover:shadow-[0_16px_35px_rgba(183,137,50,0.20)]
+                  sm:h-[50px]
+                  sm:min-w-[170px]
+                  sm:gap-2
+                  sm:px-5
+                  sm:text-[10px]
+                  sm:tracking-[0.1em]
+                  lg:h-[56px]
+                  lg:min-w-[195px]
+                  lg:gap-3
+                  lg:px-7
+                  lg:text-[11px]
+                  lg:tracking-[0.12em]
                 "
               >
 
@@ -492,12 +500,14 @@ export default function Hero() {
                   className="
                     relative
                     z-10
-                    h-4
-                    w-4
+                    h-3.5
+                    w-3.5
                     shrink-0
                     transition-transform
                     duration-500
                     group-hover:translate-x-1
+                    sm:h-4
+                    sm:w-4
                   "
                   fill="none"
                   stroke="currentColor"
@@ -519,24 +529,24 @@ export default function Hero() {
                   group
                   relative
                   inline-flex
-                  h-[56px]
-                  min-w-[215px]
-                  shrink-0
+                  h-[38px]
+                  min-w-0
+                  shrink
                   items-center
                   justify-center
-                  gap-3
+                  gap-1
                   overflow-hidden
                   rounded-[5px]
                   border
                   border-[#cdbb99]
                   bg-[#f7f5f0]
-                  px-7
-                  text-[11px]
+                  px-2.5
+                  text-[7px]
                   font-semibold
                   uppercase
-                  tracking-[0.09em]
+                  tracking-[0.04em]
                   text-[#403c36]
-                  shadow-[0_6px_18px_rgba(40,30,20,0.035)]
+                  shadow-[0_5px_15px_rgba(40,30,20,0.035)]
                   transition-all
                   duration-500
                   ease-out
@@ -545,6 +555,18 @@ export default function Hero() {
                   hover:bg-white
                   hover:text-[#9a712c]
                   hover:shadow-[0_14px_30px_rgba(40,30,20,0.08)]
+                  sm:h-[50px]
+                  sm:min-w-[190px]
+                  sm:gap-2
+                  sm:px-5
+                  sm:text-[10px]
+                  sm:tracking-[0.08em]
+                  lg:h-[56px]
+                  lg:min-w-[215px]
+                  lg:gap-3
+                  lg:px-7
+                  lg:text-[11px]
+                  lg:tracking-[0.09em]
                 "
               >
 
@@ -574,12 +596,14 @@ export default function Hero() {
 
                 <svg
                   className="
-                    h-4
-                    w-4
+                    h-3.5
+                    w-3.5
                     shrink-0
                     transition-transform
                     duration-500
                     group-hover:translate-x-1
+                    sm:h-4
+                    sm:w-4
                   "
                   fill="none"
                   stroke="currentColor"
@@ -737,20 +761,33 @@ export default function Hero() {
           <div
             className="
               relative
-              min-h-[570px]
-              sm:min-h-[650px]
+              min-h-[330px]
+              w-full
+              sm:min-h-[470px]
+              lg:min-h-[650px]
             "
           >
 
             <div
               className="
                 absolute
-                right-0
+                left-1/2
                 top-0
-                h-[500px]
+                h-[290px]
                 w-[72%]
-                sm:h-[600px]
+                -translate-x-1/2
+
+                sm:h-[430px]
+                sm:w-[68%]
+
+                md:h-[520px]
+                md:w-[65%]
+
+                lg:left-auto
+                lg:right-0
                 lg:h-[650px]
+                lg:w-[72%]
+                lg:translate-x-0
               "
             >
 
@@ -760,9 +797,11 @@ export default function Hero() {
                   absolute
                   inset-0
                   overflow-hidden
-                  rounded-[32px]
+                  rounded-[24px]
                   shadow-[0_25px_60px_rgba(40,30,20,0.15)]
                   hero-slide-${animation}
+                  sm:rounded-[30px]
+                  lg:rounded-[32px]
                 `}
               >
 
@@ -796,19 +835,23 @@ export default function Hero() {
                 <div
                   className="
                     absolute
-                    bottom-7
-                    left-7
+                    bottom-4
+                    left-4
                     z-10
                     text-white
+                    sm:bottom-7
+                    sm:left-7
                   "
                 >
 
                   <p
                     className="
-                      text-[9px]
+                      text-[7px]
                       uppercase
-                      tracking-[0.25em]
+                      tracking-[0.2em]
                       opacity-80
+                      sm:text-[9px]
+                      sm:tracking-[0.25em]
                     "
                   >
                     FAQIRI
@@ -818,7 +861,8 @@ export default function Hero() {
                     className="
                       mt-1
                       font-serif
-                      text-[20px]
+                      text-[15px]
+                      sm:text-[20px]
                     "
                   >
                     New Collection
@@ -838,13 +882,15 @@ export default function Hero() {
             <div
               className="
                 absolute
-                right-0
+                right-[4%]
                 top-[50%]
                 z-20
                 flex
                 -translate-y-1/2
                 flex-col
                 gap-3
+                sm:right-[5%]
+                lg:right-0
               "
             >
 
@@ -861,9 +907,10 @@ export default function Hero() {
 
                   <span
                     className={`
-                      text-[10px]
+                      text-[9px]
                       transition-colors
                       duration-300
+                      sm:text-[10px]
                       ${
                         index === currentImage
                           ? "text-[#a77d31]"
