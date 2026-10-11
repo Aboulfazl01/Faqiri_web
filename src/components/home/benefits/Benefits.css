@@ -1,0 +1,144 @@
+
+/* =====================================
+   MAIN VIEWPORT
+===================================== */
+
+.faqiri-loop-viewport {
+  width: 100%;
+  overflow: hidden;
+  direction: ltr !important;
+}
+
+/* =====================================
+   INFINITE TRACK
+===================================== */
+
+.faqiri-loop-track {
+  display: flex;
+  width: max-content;
+  max-width: none;
+
+  direction: ltr !important;
+
+  animation: faqiri-loop-move 30s linear infinite;
+
+  will-change: transform;
+}
+
+/* =====================================
+   GROUP - NO EMPTY SPACE
+===================================== */
+
+.faqiri-loop-group {
+  display: flex;
+  flex: 0 0 auto;
+
+  width: max(100vw, 1400px);
+
+  align-items: center;
+  justify-content: space-around;
+
+  direction: ltr !important;
+}
+
+/* =====================================
+   SINGLE BENEFIT
+===================================== */
+
+.faqiri-loop-item {
+  display: flex;
+  flex: 0 0 240px;
+
+  width: 240px;
+  min-width: 0;
+
+  box-sizing: border-box;
+  padding: 0 6px;
+
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+/* =====================================
+   TEXT
+===================================== */
+
+.faqiri-loop-item h3,
+.faqiri-loop-item p {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+/* =====================================
+   PERFECT INFINITE ANIMATION
+===================================== */
+
+@keyframes faqiri-loop-move {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media (max-width: 1024px) {
+  .faqiri-loop-group {
+    width: max(100vw, 1300px);
+  }
+
+  .faqiri-loop-item {
+    flex-basis: 225px;
+    width: 225px;
+  }
+
+  .faqiri-loop-track {
+    animation-duration: 28s;
+  }
+}
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 640px) {
+  .faqiri-loop-group {
+    width: max(100vw, 1180px);
+  }
+
+  .faqiri-loop-item {
+    flex-basis: 210px;
+    width: 210px;
+    padding: 0 5px;
+  }
+
+  .faqiri-loop-track {
+    animation-duration: 24s;
+  }
+}
+
+/* =====================================
+   REDUCED MOTION
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .faqiri-loop-viewport {
+    overflow-x: auto;
+  }
+
+  .faqiri-loop-track {
+    animation: none;
+    will-change: auto;
+  }
+}

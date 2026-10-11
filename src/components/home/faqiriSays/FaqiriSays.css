@@ -1,0 +1,30 @@
+
+/* =====================================
+   FAQIRI MESSAGE ANIMATION
+===================================== */
+
+.faqiri-says-fade {
+  animation: faqiri-message-fade 0.5s ease both;
+}
+
+@keyframes faqiri-message-fade {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================================
+   ACCESSIBILITY
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .faqiri-says-fade {
+    animation: none;
+  }
+}
