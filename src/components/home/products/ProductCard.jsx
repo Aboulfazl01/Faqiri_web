@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -12,10 +11,16 @@ export default function ProductCard({
 
   const isFa = language === "fa";
 
+  // Supports both the old bilingual format and the new name/nameFa format.
   const productName =
-    product.name?.[language] ||
-    product.name?.en ||
-    "";
+    (isFa
+      ? product.nameFa ||
+        (typeof product.name === "object" && product.name !== null
+          ? product.name.fa || product.name.en
+          : product.name)
+      : (typeof product.name === "object" && product.name !== null
+          ? product.name.en || product.name.fa
+          : product.name) || product.nameFa) || "";
 
   const productUrl = `/products/${product.id}`;
 
@@ -181,7 +186,6 @@ export default function ProductCard({
       ========================= */}
       <div className="flex flex-1 flex-col pt-3">
         <div className="min-w-0">
-
           {/* BRAND */}
           <p
             className="
@@ -193,7 +197,7 @@ export default function ProductCard({
               dark:text-[#D4AF37]
             "
           >
-            {product.brand}
+            {product.brand || "FAQIRI"}
           </p>
 
           {/* PRODUCT NAME */}
@@ -221,17 +225,6 @@ export default function ProductCard({
               {productName}
             </Link>
           </h3>
-
-          {/* PRICE */}
-          {product.price != null && (
-            <p className="mt-2 text-[15px] font-semibold text-neutral-900 dark:text-white">
-              {Number(product.price).toLocaleString(
-                "en-US"
-              )}
-              {" "}
-              {product.currency || "AFN"}
-            </p>
-          )}
         </div>
 
         {/* GOLD DECORATION */}

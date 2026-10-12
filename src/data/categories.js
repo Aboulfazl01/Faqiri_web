@@ -1,10 +1,10 @@
 
-import afghanGand from "../assets/images/afghan-gand-dresses.jpg.png";
-import customDesigns from "../assets/images/custom-designs.jpg.jpeg";
-import femalePunjabis from "../assets/images/female-punjabis.jpg.jpg";
-import hijabChapan from "../assets/images/hijab-and-chapan.jpg.jpg";
-import womensDay from "../assets/images/womens-day-dresses.jpg.webp";
-import womensOccasion from "../assets/images/womens-occasion-dresses.jpg.png";
+import afghanGand from "../assets/images/afghan-gand-dresses.jpg";
+import customDesigns from "../assets/images/custom-designs.jpg";
+import femalePunjabis from "../assets/images/female-punjabis.jpg";
+import hijabChapan from "../assets/images/hijab-and-chapan.jpg";
+import womensDay from "../assets/images/womens-day-dresses.jpg";
+import womensOccasion from "../assets/images/womens-occasion-dresses.jpg";
 
 export const categories = [
   {
