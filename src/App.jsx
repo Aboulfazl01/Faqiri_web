@@ -1,12 +1,15 @@
 
-import { useEffect, useState } from "react";
-
 import {
   BrowserRouter,
   Routes,
   Route,
   Link,
 } from "react-router-dom";
+
+// =====================================
+// LANGUAGE CONTEXT
+// =====================================
+import { useLanguage } from "./context/LanguageContext.jsx";
 
 // =====================================
 // GLOBAL COMPONENTS
@@ -43,11 +46,8 @@ import CategoryProducts from "./pages/category/CategoryProducts.jsx";
 // =====================================
 // PRODUCT DETAILS
 // =====================================
-
-// CATEGORY PRODUCT DETAILS
 import ProductDetails from "./pages/product/ProductDetails.jsx";
 
-// HOME CLOTHING DETAILS
 import ClothingDetails from "./pages/product/ClothingDetails.jsx";
 
 // =====================================
@@ -56,25 +56,25 @@ import ClothingDetails from "./pages/product/ClothingDetails.jsx";
 function HomePage() {
   return (
     <main>
-      {/* HERO SECTION */}
+      {/* HERO */}
       <Hero />
 
-      {/* CATEGORY SECTION */}
+      {/* CATEGORIES */}
       <Category />
 
       {/* EXCLUSIVE COLLECTION */}
       <ExclusiveCollection />
 
-      {/* PRODUCTS SECTION */}
+      {/* PRODUCTS */}
       <Products />
 
-      {/* BENEFITS SECTION */}
+      {/* BENEFITS */}
       <Benefits />
 
-      {/* FAQIRI SAYS SECTION */}
+      {/* FAQIRI SAYS */}
       <FaqiriSays />
 
-      {/* FOLLOW OUR WORLD SECTION */}
+      {/* FOLLOW OUR WORLD */}
       <FollowWorld />
     </main>
   );
@@ -84,36 +84,7 @@ function HomePage() {
 // TEMPORARY SHOP PRODUCTS PAGE
 // =====================================
 function ShopProductsPage() {
-  const getLanguage = () => {
-    if (typeof document === "undefined") {
-      return "en";
-    }
-
-    return document.documentElement.lang
-      .toLowerCase()
-      .startsWith("fa")
-      ? "fa"
-      : "en";
-  };
-
-  const [language, setLanguage] = useState(getLanguage);
-
-  useEffect(() => {
-    const updateLanguage = () => {
-      setLanguage(getLanguage());
-    };
-
-    updateLanguage();
-
-    const observer = new MutationObserver(updateLanguage);
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["lang"],
-    });
-
-    return () => observer.disconnect();
-  }, []);
+  const { language } = useLanguage();
 
   const isFa = language === "fa";
 
@@ -133,6 +104,7 @@ function ShopProductsPage() {
         dark:text-white
       "
     >
+      {/* SECTION LABEL */}
       <p
         className="
           text-[12px]
@@ -145,19 +117,22 @@ function ShopProductsPage() {
         FAQIRI COLLECTION
       </p>
 
+      {/* TITLE */}
       <h1
         className="
           mt-4
+          font-ravi
           text-[32px]
           font-semibold
           sm:text-[42px]
         "
       >
         {isFa
-          ? "محصولات فقیری"
-          : "Shop Products"}
+          ? "محصولات پوشاک فقیری"
+          : "FAQIRI Clothing Products"}
       </h1>
 
+      {/* GOLD DIVIDER */}
       <div
         className="
           mt-4
@@ -168,21 +143,24 @@ function ShopProductsPage() {
         "
       />
 
+      {/* DESCRIPTION */}
       <p
         className="
           mt-6
           max-w-[450px]
-          text-[15px]
+          font-ravi
+          text-[16px]
           leading-8
           text-neutral-500
           dark:text-neutral-400
         "
       >
         {isFa
-          ? "صفحه تمام محصولات فقیری به‌زودی آماده می‌شود."
-          : "Our complete FAQIRI collection is coming soon."}
+          ? "صفحه تمام محصولات پوشاک فقیری به‌زودی آماده می‌شود."
+          : "Our complete FAQIRI clothing collection is coming soon."}
       </p>
 
+      {/* BACK TO HOME */}
       <Link
         to="/"
         className="
@@ -190,7 +168,8 @@ function ShopProductsPage() {
           rounded-full
           border border-[#B58B2A]
           px-7 py-3
-          text-[13px]
+          font-ravi
+          text-[15px]
           font-medium
           text-[#B58B2A]
           transition-all
@@ -212,84 +191,101 @@ function ShopProductsPage() {
 }
 
 // =====================================
+// APP CONTENT
+// =====================================
+function AppContent() {
+  const { transitionStage } = useLanguage();
+
+  const animationClass =
+    transitionStage === "exiting"
+      ? "faqiri-language-exiting"
+      : transitionStage === "entering"
+      ? "faqiri-language-entering"
+      : "";
+
+  return (
+    <div
+      className={`
+        faqiri-language-transition
+        ${animationClass}
+        flex
+        min-h-screen
+        flex-col
+        bg-white
+        transition-colors
+        duration-300
+        dark:bg-[#0A0A0A]
+      `}
+    >
+      {/* =====================================
+          GLOBAL NAVBAR
+         ===================================== */}
+      <Navbar />
+
+      {/* =====================================
+          WEBSITE PAGE CONTENT
+         ===================================== */}
+      <div className="flex-1">
+        <Routes>
+          {/* HOME PAGE */}
+          <Route
+            path="/"
+            element={<HomePage />}
+          />
+
+          {/* ALL CATEGORIES */}
+          <Route
+            path="/categories"
+            element={<AllCategories />}
+          />
+
+          {/* CATEGORY PRODUCTS */}
+          <Route
+            path="/category/:categoryId"
+            element={<CategoryProducts />}
+          />
+
+          {/* CATEGORY PRODUCT DETAILS */}
+          <Route
+            path="/product/:productId"
+            element={<ProductDetails />}
+          />
+
+          {/* SHOP PRODUCTS */}
+          <Route
+            path="/products"
+            element={<ShopProductsPage />}
+          />
+
+          {/* CLOTHING DETAILS */}
+          <Route
+            path="/products/:productId"
+            element={<ClothingDetails />}
+          />
+
+          {/* ADMIN LOGIN */}
+          <Route
+            path="/admin/login"
+            element={<AdminLogin />}
+          />
+        </Routes>
+      </div>
+
+      {/* =====================================
+          GLOBAL FOOTER
+         ===================================== */}
+      <Footer />
+    </div>
+  );
+}
+
+// =====================================
 // MAIN APP
 // =====================================
 function App() {
   return (
     <BrowserRouter>
-      <div
-        className="
-          flex
-          min-h-screen
-          flex-col
-          bg-white
-          transition-colors
-          duration-300
-          dark:bg-[#0A0A0A]
-        "
-      >
-        {/* =====================================
-            GLOBAL NAVBAR
-           ===================================== */}
-        <Navbar />
-
-        {/* =====================================
-            WEBSITE PAGE CONTENT
-           ===================================== */}
-        <div className="flex-1">
-          <Routes>
-
-            {/* HOME PAGE */}
-            <Route
-              path="/"
-              element={<HomePage />}
-            />
-
-            {/* ALL CATEGORIES */}
-            <Route
-              path="/categories"
-              element={<AllCategories />}
-            />
-
-            {/* CATEGORY PRODUCTS */}
-            <Route
-              path="/category/:categoryId"
-              element={<CategoryProducts />}
-            />
-
-            {/* CATEGORY PRODUCT DETAILS */}
-            <Route
-              path="/product/:productId"
-              element={<ProductDetails />}
-            />
-
-            {/* SHOP PRODUCTS PAGE */}
-            <Route
-              path="/products"
-              element={<ShopProductsPage />}
-            />
-
-            {/* CLOTHING DETAILS */}
-            <Route
-              path="/products/:productId"
-              element={<ClothingDetails />}
-            />
-
-            {/* ADMIN LOGIN */}
-            <Route
-              path="/admin/login"
-              element={<AdminLogin />}
-            />
-
-          </Routes>
-        </div>
-
-        {/* =====================================
-            GLOBAL FOOTER
-           ===================================== */}
-        <Footer />
-
-      </div>
+      <AppContent />
     </BrowserRouter>
   );
 }

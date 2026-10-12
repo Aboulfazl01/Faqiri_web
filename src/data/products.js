@@ -1,10 +1,100 @@
 
-import hijabChapan from "../assets/images/products/Hijab and Chapan.jpg";
-import customDesigns from "../assets/images/products/Custom Designs.jpeg";
-import afghanGand from "../assets/images/products/Afghan Gand Dresses.png";
-import occasionDress from "../assets/images/products/Women's Occasion Dresses.webp";
-import dayDress from "../assets/images/products/Women's Day Dresses.webp";
-import femalePunjabi from "../assets/images/products/Female Punjabis.jpg";
+/*
+========================================
+FAQIRI - PRODUCT IMAGES
+========================================
+*/
+
+// Load images from assets/images
+// Including images inside subfolders
+
+const imageModules = import.meta.glob(
+  "../assets/images/**/*.{png,jpg,jpeg,webp,avif}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  }
+);
+
+// =====================================
+// FIND IMAGE AUTOMATICALLY
+// =====================================
+
+function getProductImage(...names) {
+  const imagePaths = Object.keys(imageModules);
+
+  for (const name of names) {
+    const normalizedName = name
+      .toLowerCase()
+      .replace(/\.[^.]+$/, "")
+      .replace(/[^a-z0-9]/g, "");
+
+    const match = imagePaths.find((path) => {
+      const fileName = path
+        .split("/")
+        .pop()
+        .toLowerCase()
+        .replace(/\.[^.]+$/, "")
+        .replace(/[^a-z0-9]/g, "");
+
+      return fileName === normalizedName;
+    });
+
+    if (match) {
+      return imageModules[match];
+    }
+  }
+
+  console.warn(
+    "FAQIRI: Product image not found:",
+    names
+  );
+
+  return "";
+}
+
+// =====================================
+// PRODUCT IMAGES
+// =====================================
+
+const hijabChapan = getProductImage(
+  "hijab-and-chapan.jpg.jpg",
+  "Hijab and Chapan.jpg",
+  "hijab-and-chapan"
+);
+
+const customDesigns = getProductImage(
+  "custom-designs.jpg.jpeg",
+  "Custom Designs.jpeg",
+  "custom-designs"
+);
+
+const afghanGand = getProductImage(
+  "afghan-gand-dresses.jpg.png",
+  "Afghan Gand Dresses.png",
+  "afghan-gand-dresses"
+);
+
+const occasionDress = getProductImage(
+  "womens-occasion-dresses.jpg.png",
+  "Women's Occasion Dresses.webp",
+  "womens-occasion-dresses"
+);
+
+const dayDress = getProductImage(
+  "womens-day-dresses.jpg.webp",
+  "Women's Day Dresses.webp",
+  "womens-day-dresses"
+);
+
+const femalePunjabis = getProductImage(
+  "female-punjabis.jpg.jpg",
+  "Female Punjabis.jpg",
+  "female-punjabis"
+);
+
+
 
 // SAMPLE DATA ONLY
 // Replace all specifications with verified product details
